@@ -11,7 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-<h1><a href="../../index.jsp">Dang xuat</a> </h1>
-
+<h1><a href="/logout">Dang xuat</a> </h1>
 </body>
 </html>
