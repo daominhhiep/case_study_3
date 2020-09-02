@@ -38,7 +38,8 @@
             <td><input type="text" name="phonenumber"/></td>
         </tr>
     </table>
-    <tr><input type="submit" value="Tạo tài khoản"/></tr>
+    <input type="submit" value="Tạo tài khoản"/>
+    <button class="btn btn-success"><a style="text-decoration: none" href="../index.jsp">Quay lai</a> </button>
 </form>
 </body>
 </html>

@@ -10,14 +10,14 @@ public class LoginDao {
         boolean isValid=false;
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/casestudymodule3?useSSL=false", "root", "123456");
+            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/casestudymodule3?useUnicode=true&characterEncoding=UTF-8", "root", "123456");
             String sql = "select * from persons where userName=? and password=?";
-            PreparedStatement ps=con.prepareStatement(sql);
-            ps.setString(1,userName);
-            ps.setString(2,password);
+            PreparedStatement preparedStatement=con.prepareStatement(sql);
+            preparedStatement.setString(1,userName);
+            preparedStatement.setString(2,password);
 
-            ResultSet rs=ps.executeQuery();
-            if(rs.next()){
+            ResultSet resultSet=preparedStatement.executeQuery();
+            if(resultSet.next()){
                 isValid=true;
             } else {
                 isValid=false;

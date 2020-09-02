@@ -15,6 +15,7 @@
     Name:<input type="text" name="username"/><br/><br/>
     Password:<input type="password" name="userpass"/><br/><br/>
     <input type="submit" value="login"/>
+    <button><a style="text-decoration: none"  href="../index.jsp">Quay lai</a> </button>
 </form>
 </body>
 </html>

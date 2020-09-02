@@ -27,9 +27,8 @@ public class CreateDao extends HttpServlet {
                 String email = request.getParameter("email");
                 String phone = request.getParameter("phonenumber");
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/casestudymodule3?useSSL=false", "root", "123456");
-                PreparedStatement pst = connection.prepareStatement("insert into "
-                        + "Persons(fullName, userName, password, email, phone) values(?,?,?,?,?);");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/casestudymodule3?useUnicode=true&characterEncoding=UTF-8", "root", "123456");
+                PreparedStatement pst = connection.prepareStatement("insert into " + "Persons(fullName, userName, password, email, phone) values(?,?,?,?,?);");
                 pst.setString(1, name);
                 pst.setString(2, userName);
                 pst.setString(3, userPass);
