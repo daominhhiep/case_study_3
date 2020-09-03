@@ -9,9 +9,9 @@ public class LoginDao {
     public static boolean checkLogin(String userName,String password){
         boolean isValid=false;
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/casestudymodule3?useUnicode=true&characterEncoding=UTF-8", "root", "123456");
-            String sql = "select * from persons where userName=? and password=?";
+            String sql = "select * from users where userName=? and password=?";
             PreparedStatement preparedStatement=con.prepareStatement(sql);
             preparedStatement.setString(1,userName);
             preparedStatement.setString(2,password);
