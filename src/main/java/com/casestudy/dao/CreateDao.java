@@ -13,6 +13,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import static com.casestudy.connection.ConnectionDBUser.getConnection;
+
+
 @WebServlet(name = "CreateServlet", urlPatterns = "/create")
 public class CreateDao extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -26,9 +29,9 @@ public class CreateDao extends HttpServlet {
                 String userPass = request.getParameter("userpass");
                 String email = request.getParameter("email");
                 String phone = request.getParameter("phonenumber");
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/casestudymodule3?useUnicode=true&characterEncoding=UTF-8", "root", "123456");
-                PreparedStatement pst = connection.prepareStatement("insert into " + "users(fullName, userName, password, email, phone) values(?,?,?,?,?);");
+                Connection connection = getConnection();
+                PreparedStatement pst = connection.prepareStatement("insert into " +
+                        "Users(fullName, userName, password, email, phone) values(?,?,?,?,?);");
                 pst.setString(1, name);
                 pst.setString(2, userName);
                 pst.setString(3, userPass);
@@ -36,7 +39,7 @@ public class CreateDao extends HttpServlet {
                 pst.setString(5, phone);
                 pst.executeUpdate();
 //                request.setAttribute("add","Tạo tài khoản thành công!");
-                RequestDispatcher dis = request.getRequestDispatcher("users/login.jsp");
+                RequestDispatcher dis = request.getRequestDispatcher("index.jsp");
                 dis.forward(request, response);
 
             } catch (ClassNotFoundException | SQLException e) {
