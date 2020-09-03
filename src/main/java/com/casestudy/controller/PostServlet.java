@@ -1,0 +1,129 @@
+package com.casestudy.controller;
+
+import com.casestudy.dao.PostDao;
+import com.casestudy.model.Post;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+
+@WebServlet(name = "PostServlet", urlPatterns = "/posts")
+public class PostServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    private PostDao postDao;
+
+    public void init() {
+        postDao = new PostDao();
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+        try {
+            switch (action) {
+                case "create":
+                    insertPost(request, response);
+                    break;
+                case "edit":
+                    updatePost(request, response);
+                    break;
+            }
+        } catch (SQLException ex) {
+            throw new ServletException(ex);
+        }
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+
+        try {
+            switch (action) {
+                case "create":
+                    showNewForm(request, response);
+                    break;
+                case "edit":
+                    showEditForm(request, response);
+                    break;
+                case "delete":
+                    deletePost(request, response);
+                    break;
+                default:
+                    listPost(request, response);
+                    break;
+            }
+        } catch (SQLException ex) {
+            throw new ServletException(ex);
+        }
+    }
+
+    private void listPost(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        List<Post> listPost = postDao.selectAllPosts();
+        request.setAttribute("listPost", listPost);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/main.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void showNewForm(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/createPost.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Post existingPost = postDao.selectPost(id);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/createPost.jsp");
+        request.setAttribute("post", existingPost);
+        dispatcher.forward(request, response);
+
+    }
+
+    private void insertPost(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String images = request.getParameter("images");
+        String content = request.getParameter("content");
+        Post newPost = new Post(id, images, content);
+        postDao.insertPost(newPost);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/createPost.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void updatePost(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String images = request.getParameter("images");
+        String content = request.getParameter("content");
+
+        Post book = new Post(id, images, content);
+        postDao.updatePost(book);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/createPost.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void deletePost(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        postDao.deletePost(id);
+
+        List<Post> listPost = postDao.selectAllPosts();
+        request.setAttribute("listPost", listPost);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/createPost.jsp");
+        dispatcher.forward(request, response);
+    }
+}
