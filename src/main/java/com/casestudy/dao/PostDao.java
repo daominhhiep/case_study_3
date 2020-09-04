@@ -8,7 +8,7 @@ import java.util.List;
 
 public class PostDao implements IPostDao{
     private static final String SELECT_POST_BY_ID = "select id,images,content from post where id =?";
-    private static final String SELECT_ALL_POST = "select * from post";
+    private static final String SELECT_ALL_POST = "select *  from post";
     private static final String DELETE_POST_SQL = "delete from post where id = ?;";
     private static final String UPDATE_POST_SQL = "update post set images = ?,content= ? where id = ?;";
 
@@ -78,9 +78,10 @@ public class PostDao implements IPostDao{
             // Step 3: Execute the query or update query
             ResultSet rs = preparedStatement.executeQuery();
 
+
             // Step 4: Process the ResultSet object.
             while (rs.next()) {
-                int id = rs.getInt("id");
+                int id = rs.getInt("postId");
                 String images = rs.getString("images");
                 String content = rs.getString("content");
                 posts.add(new Post(id, images, content));

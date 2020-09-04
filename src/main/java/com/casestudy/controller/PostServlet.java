@@ -73,7 +73,7 @@ public class PostServlet extends HttpServlet {
             throws SQLException, IOException, ServletException {
         List<Post> listPost = postDao.selectAllPosts();
         request.setAttribute("listPost", listPost);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/main.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/main.jsp");
         dispatcher.forward(request, response);
     }
 
