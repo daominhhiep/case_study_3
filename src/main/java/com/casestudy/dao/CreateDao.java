@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import static com.casestudy.connection.ConnectionDBUser.getConnection;
+import com.casestudy.util.Validate;
 
 
 @WebServlet(name = "CreateServlet", urlPatterns = "/create")
@@ -22,25 +23,48 @@ public class CreateDao extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        try {
+        String name = request.getParameter("name");
+        String userName = request.getParameter("username");
+        String userPass = request.getParameter("userpass");
+        String reUserPass = request.getParameter("reUserpass");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phonenumber");
+
+        RequestDispatcher disCreate = request.getRequestDispatcher("users/create.jsp");
+        if (!Validate.checkName(name)){
+            request.setAttribute("error", "Nhập tên đầy đủ!");
+            disCreate.forward(request,response);
+        } else if (!Validate.checkEmail(email)){
+            request.setAttribute("error1", "Nhập email!");
+            disCreate.forward(request,response);
+        } else if (!Validate.checkUsername(userName)) {
+            request.setAttribute("error2", "Nhập chữ cái thường hoặc chữ số gồm 8 đến 16 ký tự!");
+            disCreate.forward(request, response);
+        } else if (!Validate.checkPhone(phone)){
+            request.setAttribute("error3", "Nhập đúng số điện thoại của bạn");
+            disCreate.forward(request,response);
+        } else if (!Validate.checkPassword(userPass)) {
+            request.setAttribute("error4", "Nhập chữ cái hoa hoặc thường và chữ số, mật khẩu gồm 8 ký tự trở lên!");
+            disCreate.forward(request,response);
+        } else if (userPass.equals(reUserPass)){
+            request.setAttribute("error5", "Mật khẩu không khớp!");
+            disCreate.forward(request,response);
+        } else {
             try {
-                String name = request.getParameter("name");
-                String userName = request.getParameter("username");
-                String userPass = request.getParameter("userpass");
-                String email = request.getParameter("email");
-                String phone = request.getParameter("phonenumber");
-                Connection connection = getConnection();
-                PreparedStatement pst = connection.prepareStatement("insert into " +
-                        "Users(fullName, userName, password, email, phone) values(?,?,?,?,?);");
-                pst.setString(1, name);
-                pst.setString(2, userName);
-                pst.setString(3, userPass);
-                pst.setString(4, email);
-                pst.setString(5, phone);
-                pst.executeUpdate();
+            try {
+
+                    Connection connection = getConnection();
+                    PreparedStatement pst = connection.prepareStatement("insert into " +
+                            "Users(fullName, userName, password, email, phone) values(?,?,?,?,?);");
+                    pst.setString(1, name);
+                    pst.setString(2, userName);
+                    pst.setString(3, userPass);
+                    pst.setString(4, email);
+                    pst.setString(5, phone);
+                    pst.executeUpdate();
 //                request.setAttribute("add","Tạo tài khoản thành công!");
-                RequestDispatcher dis = request.getRequestDispatcher("index.jsp");
-                dis.forward(request, response);
+                    RequestDispatcher disIndex = request.getRequestDispatcher("index.jsp");
+                    disIndex.forward(request, response);
 
             } catch (ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
@@ -48,6 +72,29 @@ public class CreateDao extends HttpServlet {
         } finally {
             out.close();
         }
+        }
+//        try {
+//            try {
+//
+//                    Connection connection = getConnection();
+//                    PreparedStatement pst = connection.prepareStatement("insert into " +
+//                            "Users(fullName, userName, password, email, phone) values(?,?,?,?,?);");
+//                    pst.setString(1, name);
+//                    pst.setString(2, userName);
+//                    pst.setString(3, userPass);
+//                    pst.setString(4, email);
+//                    pst.setString(5, phone);
+//                    pst.executeUpdate();
+////                request.setAttribute("add","Tạo tài khoản thành công!");
+//                    RequestDispatcher dis = request.getRequestDispatcher("index.jsp");
+//                    dis.forward(request, response);
+//
+//            } catch (ClassNotFoundException | SQLException e) {
+//                e.printStackTrace();
+//            }
+//        } finally {
+//            out.close();
+//        }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

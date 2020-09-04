@@ -42,12 +42,12 @@
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
                     <input class="form-control" placeholder="Full name" type="text" name="name">
-                </div> <!-- form-group// -->
+                </div><span style="color: red"><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error"))%></span> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Email address" type="email" name="email">
+                    <input class="form-control" placeholder="Email address" type="email" name="email"><span><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error1"))%></span>
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
@@ -56,25 +56,25 @@
                     <select class="custom-select" style="max-width: 120px;">
                         <option selected="">+84</option>
                     </select>
-                    <input class="form-control" placeholder="Phone number" type="text" name="phonenumber">
+                    <input class="form-control" placeholder="Phone number" type="text" name="phonenumber"><span><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error2"))%></span>
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-building"></i> </span>
                     </div>
-                    <input class="form-control" type="text" placeholder="Username" name="username">
+                    <input class="form-control" type="text" placeholder="Username" name="username"><span><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error3"))%></span>
                 </div> <!-- form-group end.// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Create password" type="password" name="userpass">
+                    <input class="form-control" placeholder="Create password" type="password" name="userpass"><span><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error4"))%></span>
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Repeat password" type="password" name="reUserpass">
+                    <input class="form-control" placeholder="Repeat password" type="password" name="reUserpass"><span><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error5"))%></span>
                 </div> <!-- form-group// -->
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block"> Create Account</button>
