@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
-<header class="header">
+<header class="header fixed-top">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">
             <img src="resources/image/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -31,26 +31,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Hot</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Thể loại
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Hài</a>
-                        <a class="dropdown-item" href="#">Động vật</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Ảnh của tôi</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
         </div>
 
 
@@ -79,13 +60,18 @@
                 <button type="submit" class="btn btn-primary">Sign in</button>
             </form>
         </div>
-
-
-        <div class="nav-link" style="margin-right: 20px">
+        <div class="nav-link">
             <a href="users/create.jsp">Đăng ký</a>
+        </div>
+    </nav>
+</header>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
 <script src="resources/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>
