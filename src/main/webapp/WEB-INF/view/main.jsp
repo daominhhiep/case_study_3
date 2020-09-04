@@ -67,6 +67,16 @@
     </nav>
 </header>
 
+<c:forEach items="${listPost}" var="cus">
+    <tr>
+        <td><img src="${cus.images}" alt="không có" width="200px" height="200px"></td>
+        <td>${cus.content}</td>
+        <td>${cus.images}</td>
+        <td>${cus.postId}</td>
+    </tr>
+</c:forEach>
+
+
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

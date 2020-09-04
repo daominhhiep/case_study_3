@@ -12,5 +12,10 @@
 </head>
 <body>
 
+<form method="post" action="/upload">
+    <input type="file" name="file" >
+    <button type="submit">Upload</button>
+</form>
+
 </body>
 </html>

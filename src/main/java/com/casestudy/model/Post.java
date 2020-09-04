@@ -8,10 +8,10 @@ public class Post {
     public Post() {
     }
 
-    public Post(int postId, String content, String images) {
+    public Post(int postId, String images, String content) {
         this.postId = postId;
-        this.content = content;
         this.images = images;
+        this.content = content;
     }
 
     public int getPostId() {
