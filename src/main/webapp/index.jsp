@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
-<header class="header fixed-top">
+<header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">
             <img src="resources/image/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -65,6 +65,7 @@
         </div>
     </nav>
 </header>
+<button><a href="createPost.jsp">ahihi</a></button>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
