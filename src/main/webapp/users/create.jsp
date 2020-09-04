@@ -29,7 +29,7 @@
 
 <section>
     <div class="card">
-        <article class="card-body mx-auto" style="max-width: 400px;">
+        <article class="card-body mx-auto" style="max-width: 400px">
             <h4 class="card-title mt-3 text-center">Create Account</h4>
             <p>
                 <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
@@ -41,13 +41,15 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Full name" type="text" name="name">
-                </div> <!-- form-group// -->
+                    <input class="form-control" placeholder="Full name" type="text" name="name" required="">
+                </div>
+                <span style="color: red"><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error"))%></span> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Email address" type="email" name="email">
+                    <input class="form-control" placeholder="Email address" type="email" name="email" required="">
+                    <span><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error1"))%></span>
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
@@ -56,25 +58,29 @@
                     <select class="custom-select" style="max-width: 120px;">
                         <option selected="">+84</option>
                     </select>
-                    <input class="form-control" placeholder="Phone number" type="text" name="phonenumber">
+                    <input class="form-control" placeholder="Phone number" type="text" name="phonenumber" required="">
+                    <span><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error2"))%></span>
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-building"></i> </span>
                     </div>
-                    <input class="form-control" type="text" placeholder="Username" name="username">
+                    <input class="form-control" type="text" placeholder="Username" name="username" required="">
+                    <span><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error3"))%></span>
                 </div> <!-- form-group end.// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Create password" type="password" name="userpass">
+                    <input class="form-control" placeholder="Create password" type="password" name="userpass" required="">
+                    <span><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error4"))%></span>
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Repeat password" type="password" name="reUserpass">
+                    <input class="form-control" placeholder="Repeat password" type="password" name="reUserpass" required="">
+                    <span><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error5"))%></span>
                 </div> <!-- form-group// -->
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block"> Create Account</button>

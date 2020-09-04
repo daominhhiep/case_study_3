@@ -57,7 +57,8 @@ public class PostDao implements IPostDao{
             while (rs.next()) {
                 String images = rs.getString("images");
                 String content = rs.getString("content");
-                post = new Post(id, images, content);
+                String path = rs.getString("path");
+                post = new Post(id, images, content, path);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -84,7 +85,8 @@ public class PostDao implements IPostDao{
                 int id = rs.getInt("postId");
                 String images = rs.getString("images");
                 String content = rs.getString("content");
-                posts.add(new Post(id, images, content));
+                String path = rs.getString("path");
+                posts.add(new Post(id, images, content, path));
             }
         } catch (SQLException e) {
             printSQLException(e);

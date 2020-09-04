@@ -1,6 +1,7 @@
 package com.casestudy.controller;
 
 import com.casestudy.dao.LoginDao;
+import com.casestudy.model.Post;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
@@ -25,9 +28,10 @@ public class LoginServlet extends HttpServlet {
             boolean isValid = LoginDao.checkLogin(username, password);
 
             if (isValid) {
+
                 HttpSession session = request.getSession();
                 session.setAttribute("username", username);
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/view/main.jsp");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/posts");
                 requestDispatcher.forward(request, response);
             } else {
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");

@@ -44,12 +44,12 @@
                 <div class="form-group" >
                     <label for="exampleDropdownFormEmail2">Username</label>
                     <input type="text" class="form-control" id="exampleDropdownFormEmail2"
-                           placeholder="Username" name="username">
+                           placeholder="Username" name="username" required="">
                 </div>
                 <div class="form-group">
                     <label for="exampleDropdownFormPassword2">Password</label>
                     <input type="password" class="form-control" id="exampleDropdownFormPassword2"
-                           placeholder="Password" name="userpass">
+                           placeholder="Password" name="userpass" required="">
                 </div>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="dropdownCheck2">
