@@ -11,8 +11,8 @@ import java.io.*;
 
 
 @MultipartConfig
-@WebServlet(name = "PostServlet", urlPatterns = "/post")
-public class PostServlet extends HttpServlet {
+@WebServlet(name = "UploadServlet", urlPatterns = "/upload")
+public class UploadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()){
