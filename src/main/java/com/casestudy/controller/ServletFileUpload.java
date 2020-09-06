@@ -53,21 +53,23 @@ public class ServletFileUpload extends HttpServlet {
             String images = filePart.getSubmittedFileName();
             String path1 = folderName + File.separator + images;
             Timestamp added_date = new Timestamp(System.currentTimeMillis());
+            System.out.println("id: " + id);
+            System.out.println("content: " + content);
             System.out.println("images: " + images);
-            System.out.println("Path: " + uploadPath);
-            System.out.println("Name: " + content);
+            System.out.println("path: " + path1);
+            System.out.println("date: " + added_date);
             InputStream is = filePart.getInputStream();
             Files.copy(is, Paths.get(uploadPath + File.separator + images), StandardCopyOption.REPLACE_EXISTING);
 
             try {
                 connection = ConnectionDBUser.getConnection();
                 System.out.println("connection done");
-                String sql = "insert into post values(?,?,?,?,?)";
+                String sql = "insert into post(postId,content,images,path,added_date) values(?,?,?,?,?)";
                 ps = connection.prepareStatement(sql);
                 ps.setInt(1, id);
                 ps.setString(2, content);
                 ps.setString(3, images);
-                ps.setString(4, "C:\\Users\\dongn\\Desktop\\apache-tomcat-9.0.37\\webapps\\ROOT\\resources"+images);
+                ps.setString(4, path1);
                 ps.setTimestamp(5, added_date);
                 int status = ps.executeUpdate();
                 if (status > 0) {
