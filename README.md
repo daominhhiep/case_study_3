@@ -12,7 +12,7 @@ CREATE TABLE persons (
 
 CREATE TABLE post (
     postId int(11) primary key ,
-    content varchar(255) NOT NULL,
+    content nvarchar(255) NOT NULL,
     images varchar(255) NOT NULL,
     path varchar(255) NOT NULL,
     addded_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -25,7 +25,7 @@ CREATE TABLE post (
 
 CREATE TABLE comment(
     commentId INT PRIMARY KEY ,
-    content VARCHAR(255),
+    content NVARCHAR(255),
     postId INT,
     userId INT,
     FOREIGN KEY (postId) REFERENCES post(postId),

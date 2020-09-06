@@ -9,10 +9,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Luon Vuituoi</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../resources/css/style.css">
 </head>
+
 <body>
 <header class="fixed-top">
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 70px">
@@ -46,7 +48,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a  class="nav-link" href="createPost.jsp">Đăng bài</a>
+                    <a  class="nav-link" href="/login?action=createPost">Đăng bài</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -55,7 +57,7 @@
             </form>
         </div>
         <div class="nav-item">
-            <a class="nav-link disabled" href="#">
+            <a class="nav-link disabled" href="/login?action=editProfile">
                 <%
                     String username = (String) session.getAttribute("username");
                     if (session != null) {
@@ -74,11 +76,16 @@
     <div class="card">
         <article class="card-body mx-auto">
             <c:forEach items="${listPost}" var="cus">
-                <h1 class="card-title mt-3 text-center">${cus.content}</h1>
-                <div style="border: 1px black solid; margin-bottom: 50px">
-                    <table style="margin: 50px 20px">
+
+                <div style="margin-bottom: 50px">
+                    <table width="1100px">
                         <tr>
-                            <td><img src="${cus.path}" alt="không có"></td>
+                            <td width="800px">
+                                <img src="${cus.path}" alt="không có">
+                            </td>
+                            <td width="300px">
+                                <h1 class="card-title top">${cus.content}</h1>
+                            </td>
                         </tr>
                     </table>
                 </div>
