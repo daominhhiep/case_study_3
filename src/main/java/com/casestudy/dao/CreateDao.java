@@ -51,11 +51,10 @@ public class CreateDao extends HttpServlet {
             disCreate.forward(request,response);
         } else {
             try {
-            try {
 
                     Connection connection = getConnection();
                     PreparedStatement pst = connection.prepareStatement("insert into " +
-                            "Users(fullName, userName, password, email, phone) values(?,?,?,?,?);");
+                            "users(fullName, userName, password, email, phone) values(?,?,?,?,?);");
                     pst.setString(1, name);
                     pst.setString(2, userName);
                     pst.setString(3, userPass);
@@ -66,35 +65,12 @@ public class CreateDao extends HttpServlet {
                     RequestDispatcher disIndex = request.getRequestDispatcher("index.jsp");
                     disIndex.forward(request, response);
 
-            } catch (ClassNotFoundException | SQLException e) {
+            } catch (SQLException e) {
                 e.printStackTrace();
-            }
         } finally {
             out.close();
         }
         }
-//        try {
-//            try {
-//
-//                    Connection connection = getConnection();
-//                    PreparedStatement pst = connection.prepareStatement("insert into " +
-//                            "Users(fullName, userName, password, email, phone) values(?,?,?,?,?);");
-//                    pst.setString(1, name);
-//                    pst.setString(2, userName);
-//                    pst.setString(3, userPass);
-//                    pst.setString(4, email);
-//                    pst.setString(5, phone);
-//                    pst.executeUpdate();
-////                request.setAttribute("add","Tạo tài khoản thành công!");
-//                    RequestDispatcher dis = request.getRequestDispatcher("index.jsp");
-//                    dis.forward(request, response);
-//
-//            } catch (ClassNotFoundException | SQLException e) {
-//                e.printStackTrace();
-//            }
-//        } finally {
-//            out.close();
-//        }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

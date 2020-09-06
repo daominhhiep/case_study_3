@@ -5,12 +5,20 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionDBUser {
-    private static final String jdbcURL = "jdbc:mysql://localhost:3306/casestudymodule3?useUnicode=true&characterEncoding=UTF-8";
-    private static final String jdbcUsername = "root";
-    private static final String jdbcPassword = "123456";
-    public static Connection getConnection() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection connection= DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-        return connection;
+    static String URL = "localhost:3306/";
+    static String DATABASE_NAME = "casestudymodule3";
+    static String USERNAME = "root";
+    static String PASSWORD = "123456";
+
+    public static Connection getConnection() {
+        Connection con = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://" + URL + DATABASE_NAME, USERNAME, PASSWORD);
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+        return con;
     }
 }

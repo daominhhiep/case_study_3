@@ -17,12 +17,12 @@
         <tr>
             <td align="center" colspan="2">Form Details</td>
         </tr>
-<%--        <tr>--%>
-<%--            <td>id </td>--%>
-<%--            <td>--%>
-<%--                <input type="text" required="" name="id">--%>
-<%--            </td>--%>
-<%--        </tr>--%>
+        <tr>
+            <td>id </td>
+            <td>
+                <input type="text" required="" name="id">
+            </td>
+        </tr>
         <tr>
             <td>Tiêu đề </td>
             <td>

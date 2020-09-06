@@ -29,7 +29,7 @@ import java.sql.Timestamp;
 public class ServletFileUpload extends HttpServlet {
 
     PrintWriter out;
-    Connection con;
+    Connection connection;
     PreparedStatement ps;
     ServletOutputStream os;
 
@@ -48,7 +48,7 @@ public class ServletFileUpload extends HttpServlet {
                 dir.mkdirs();
             }
             Part filePart = request.getPart("file");
-//            int id = Integer.parseInt(request.getParameter("id"));
+            int id = Integer.parseInt(request.getParameter("id"));
             String content = request.getParameter("content");
             String images = filePart.getSubmittedFileName();
             String path1 = folderName + File.separator + images;
@@ -60,29 +60,27 @@ public class ServletFileUpload extends HttpServlet {
             Files.copy(is, Paths.get(uploadPath + File.separator + images), StandardCopyOption.REPLACE_EXISTING);
 
             try {
-                con = ConnectionDBUser.getConnection();
+                connection = ConnectionDBUser.getConnection();
                 System.out.println("connection done");
-                String sql = "insert into post values(?,?,?,?)";
-                ps = con.prepareStatement(sql);
-//                ps.setInt(1, id);
-                ps.setString(1, content);
-                ps.setString(2, images);
-                ps.setString(3, path1);
-                ps.setTimestamp(4, added_date);
+                String sql = "insert into post values(?,?,?,?,?)";
+                ps = connection.prepareStatement(sql);
+                ps.setInt(1, id);
+                ps.setString(2, content);
+                ps.setString(3, images);
+                ps.setString(4, "C:\\Users\\dongn\\Desktop\\apache-tomcat-9.0.37\\webapps\\ROOT\\resources"+images);
+                ps.setTimestamp(5, added_date);
                 int status = ps.executeUpdate();
                 if (status > 0) {
                     os.println("File uploaded successfully...");
                     os.println("Uploaded Path: " + uploadPath);
                 }
             } catch (SQLException e) {
-                os.println("Some error occured please console log.");
+                os.println("Some error occured please console log. hihi");
                 System.out.println("Exception1: " + e);
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
             }
 
         } catch (IOException | ServletException e) {
-            os.println("Some error occured please console log.");
+            os.println("Some error occured please console log. Huhu");
             System.out.println("Exception2: " + e);
         }
     }
