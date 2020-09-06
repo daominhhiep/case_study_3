@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
-<header class="header fixed-top">
+<header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">
             <img src="resources/image/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">

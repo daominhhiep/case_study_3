@@ -1,6 +1,7 @@
 package com.casestudy.controller;
 
 import com.casestudy.dao.LoginDao;
+import com.casestudy.dao.PostDao;
 import com.casestudy.model.Post;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,5 +45,27 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+        switch (action) {
+            case "createPost":
+                showNewForm(request, response);
+                break;
+            case "editProfile":
+                showEditProfile(request, response);
+        }
+    }
+
+    private void showEditProfile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/editProfile.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void showNewForm(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/createPost.jsp");
+        dispatcher.forward(request, response);
     }
 }

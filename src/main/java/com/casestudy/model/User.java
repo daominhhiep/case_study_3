@@ -9,20 +9,12 @@ public class User {
     protected String phone;
 
     public User() {
+
     }
 
-    public User(int id, String fullName, String userName, String password, String email, String phone) {
+    public User(int id, String fullName, String password, String email, String phone) {
         this.id = id;
         this.fullName = fullName;
-        this.userName = userName;
-        this.password = password;
-        this.email = email;
-        this.phone = phone;
-    }
-
-    public User(String fullName, String userName, String password, String email, String phone) {
-        this.fullName = fullName;
-        this.userName = userName;
         this.password = password;
         this.email = email;
         this.phone = phone;
