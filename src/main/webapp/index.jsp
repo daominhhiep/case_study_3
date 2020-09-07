@@ -38,7 +38,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Giới thiệu</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">Dự án</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#signup">Liện hệ</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#signup">Liên hệ</a></li>
                 <li class="nav-item">
                     <div class="nav-link dropdown">
                         <a class="nav nav-item " id="dropdownMenu2"
@@ -62,7 +62,7 @@
                                     Remember
                                 </label>
                             </div>
-                            <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                            <button type="submit" class="btn btn-primary">Vào</button>
                         </form>
                     </div>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="users/create.jsp">Đăng ký</a></li>

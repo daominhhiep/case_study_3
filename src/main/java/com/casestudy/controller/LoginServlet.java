@@ -30,7 +30,6 @@ public class LoginServlet extends HttpServlet {
             boolean isValid = LoginDao.checkLogin(username, password);
 
             if (isValid) {
-
                 HttpSession session = request.getSession();
                 session.setAttribute("username", username);
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/posts");
@@ -55,6 +54,10 @@ public class LoginServlet extends HttpServlet {
                 break;
             case "editProfile":
                 showEditProfile(request, response);
+                break;
+            case "searchPost":
+                searchPostByContent(request,response);
+                break;
         }
     }
 
@@ -66,6 +69,16 @@ public class LoginServlet extends HttpServlet {
     private void showNewForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/createPost.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void searchPostByContent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String regex = request.getParameter("regex");
+        String contentPost = request.getParameter("content");
+        List<Post> posts = PostDao.selectPostByName(regex);
+        request.setAttribute("listAllPost", posts);
+        request.setAttribute("content", contentPost);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/posts");
         dispatcher.forward(request, response);
     }
 }

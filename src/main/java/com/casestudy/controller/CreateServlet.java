@@ -1,4 +1,4 @@
-package com.casestudy.dao;
+package com.casestudy.controller;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,7 +19,7 @@ import com.casestudy.util.Validate;
 
 
 @WebServlet(name = "CreateServlet", urlPatterns = "/create")
-public class CreateDao extends HttpServlet {
+public class CreateServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");

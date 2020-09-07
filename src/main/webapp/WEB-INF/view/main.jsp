@@ -53,10 +53,10 @@
                     <a  class="nav-link" href="/login?action=createPost">Đăng bài</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <a class="text-success my-2 my-sm-0" type="submit">Search</a>
-            </form>
+<%--            <form class="form-inline my-2 my-lg-0" action="/login?action=searchPost">--%>
+<%--                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="regex">--%>
+<%--                <a class="text-success my-2 my-sm-0" type="submit">Search</a>--%>
+<%--            </form>--%>
         </div>
         <div class="nav-item">
             <a class="nav-link" href="/login?action=editProfile">
