@@ -36,6 +36,9 @@ public class PostServlet extends HttpServlet {
                 case "edit":
                     updatePost(request, response);
                     break;
+                case "delete":
+                    deletePost(request, response);
+                    break;
                 default:
                     listPost(request, response);
                     break;
@@ -122,12 +125,13 @@ public class PostServlet extends HttpServlet {
 
     private void deletePost(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        postDao.deletePost(id);
+        int postId = Integer.parseInt(request.getParameter("postId"));
+        System.out.println("id: " + postId);
+        postDao.deletePost(postId);
 
         List<Post> listPost = postDao.selectAllPosts();
         request.setAttribute("listPost", listPost);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/createPost.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/main.jsp");
         dispatcher.forward(request, response);
     }
 }

@@ -1,6 +1,7 @@
 package com.casestudy.dao;
 
 import com.casestudy.model.Post;
+import com.casestudy.util.StringUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -9,8 +10,8 @@ import java.util.List;
 public class PostDao implements IPostDao{
     private static final String SELECT_POST_BY_ID = "select id,images,content from post where id =?";
     private static final String SELECT_ALL_POST = "select *  from post";
-    private static final String DELETE_POST_SQL = "delete from post where id = ?;";
-    private static final String UPDATE_POST_SQL = "update post set images = ?,content= ? where id = ?;";
+    private static final String DELETE_POST_SQL = "delete from post where postId = ?;";
+    private static final String UPDATE_POST_SQL = "update post set images = ?,content= ? where postId = ?;";
 
     public PostDao() {
     }
@@ -86,7 +87,7 @@ public class PostDao implements IPostDao{
                 String images = rs.getString("images");
                 String content = rs.getString("content");
                 String path = rs.getString("path");
-                posts.add(new Post(images, content, path));
+                posts.add(new Post(id,images, content, path));
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -94,10 +95,10 @@ public class PostDao implements IPostDao{
         return posts;
     }
 
-    public boolean deletePost(int id) throws SQLException {
+    public boolean deletePost(int postId) throws SQLException {
         boolean rowDeleted;
         try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(DELETE_POST_SQL);) {
-            statement.setInt(1, id);
+            statement.setInt(1, postId);
             rowDeleted = statement.executeUpdate() > 0;
         }
         return rowDeleted;

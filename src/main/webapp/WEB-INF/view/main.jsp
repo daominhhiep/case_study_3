@@ -86,6 +86,8 @@
                             <td width="300px">
                                 <h1 class="card-title top">${cus.content}</h1>
                             </td>
+                                <h1 class="card-title top" name ="${cus.postId}" hidden>${cus.postId}</h1>
+                            <td><a name="delete" href="/posts?action=delete&postId=${cus.postId}">Xóa</a></td>
                         </tr>
                     </table>
                 </div>
