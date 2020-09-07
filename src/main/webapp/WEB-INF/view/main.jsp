@@ -9,12 +9,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Luon Vuituoi</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../resources/css/style.css">
 </head>
+
 <body>
-<header class="header fixed-top" >
+<header class="fixed-top">
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 70px">
         <a class="navbar-brand" href="#">
             <img src="../../resources/image/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -45,6 +47,9 @@
                         <a class="dropdown-item" href="#">Ảnh của tôi</a>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a  class="nav-link" href="/login?action=createPost">Đăng bài</a>
+                </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -52,7 +57,7 @@
             </form>
         </div>
         <div class="nav-item">
-            <a class="nav-link disabled" href="#">
+            <a class="nav-link disabled" href="/login?action=editProfile">
                 <%
                     String username = (String) session.getAttribute("username");
                     if (session != null) {
@@ -62,19 +67,32 @@
             </a>
         </div>
         <div class="nav-link">
-            <a href="/logout">Đăng xuất</a>
+            <a href="/LogoutServlet">Đăng xuất</a>
         </div>
     </nav>
 </header>
 
-<c:forEach items="${listPost}" var="cus">
-    <tr>
-        <td><img src="${cus.images}" alt="không có" width="200px" height="200px"></td>
-        <td>${cus.content}</td>
-        <td>${cus.images}</td>
-        <td>${cus.postId}</td>
-    </tr>
-</c:forEach>
+<section  style="margin-top: 70px">
+    <div class="card">
+        <article class="card-body mx-auto">
+            <c:forEach items="${listPost}" var="cus">
+
+                <div style="margin-bottom: 50px">
+                    <table width="1100px">
+                        <tr>
+                            <td width="800px">
+                                <img src="${cus.path}" alt="không có">
+                            </td>
+                            <td width="300px">
+                                <h1 class="card-title top">${cus.content}</h1>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </c:forEach>
+        </article>
+    </div>
+</section>
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

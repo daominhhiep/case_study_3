@@ -4,14 +4,16 @@ public class Post {
     private int postId;
     private String content;
     private String images;
+    private String path;
 
     public Post() {
     }
 
-    public Post(int postId, String images, String content) {
+    public Post(String images, String content, String path) {
         this.postId = postId;
         this.images = images;
         this.content = content;
+        this.path = path;
     }
 
     public int getPostId() {
@@ -36,6 +38,14 @@ public class Post {
 
     public void setImages(String images) {
         this.images = images;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }
 

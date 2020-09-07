@@ -1,20 +1,22 @@
 <%--
   Created by IntelliJ IDEA.
   User: admin
-  Date: 01-Sep-20
-  Time: 3:15 PM
+  Date: 06-Sep-20
+  Time: 4:37 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Tạo tài khoản mới</title>
+    <title>Title</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../resources/fontawesome/css/all.css">
 
 </head>
 <body>
+
 
 <header class="header">
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 70px">
@@ -30,27 +32,28 @@
 <section>
     <div class="card">
         <article class="card-body mx-auto" style="max-width: 400px">
-            <h4 class="card-title mt-3 text-center">Create Account</h4>
-            <p>
-                <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
-                <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via
-                    facebook</a>
-            </p>
-            <form method="post" action="/create">
+            <h4 class="card-title mt-3 text-center">Edit Profile</h4>
+
+            <form method="post" action="/editProfile">
+                <c:if test="${user != null}">
+                    <input type="hidden" name="userId" value="<c:out value='${user.id}' />"/>
+                </c:if>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Full name" type="text" name="name" required="">
+                    <input class="form-control" placeholder="Full name" type="text" name="fullName" required=""
+                    value="<c:out value='${user.fullname}'/>"/>
                 </div>
                 <span style="color: red"><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error"))%></span> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Email address" type="email" name="email" required="">
-                    <span><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error1"))%></span>
+                    <input class="form-control" placeholder="Email address" type="email" name="email" required=""
+                    value="<c:out value='${user.email}'/>"/>
                 </div> <!-- form-group// -->
+                <span><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error1"))%></span>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
@@ -58,46 +61,40 @@
                     <select class="custom-select" style="max-width: 120px;">
                         <option selected="">+84</option>
                     </select>
-                    <input class="form-control" placeholder="Phone number" type="text" name="phonenumber" required="">
-                    <span><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error2"))%></span>
+                    <input class="form-control" placeholder="Phone number" type="text" name="phone" required=""
+                    value="<c:out value='${user.phone}'/>">
+
                 </div> <!-- form-group// -->
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-building"></i> </span>
-                    </div>
-                    <input class="form-control" type="text" placeholder="Username" name="username" required="">
-                    <span><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error3"))%></span>
-                </div> <!-- form-group end.// -->
+                <span><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error2"))%></span>
+
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Create password" type="password" name="userpass" required="">
-                    <span><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error4"))%></span>
+                    <input class="form-control" placeholder="Edit password" type="password" name="password" required="">
+
                 </div> <!-- form-group// -->
+                <span><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error4"))%></span>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
                     <input class="form-control" placeholder="Repeat password" type="password" name="reUserpass" required="">
-                    <span><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error5"))%></span>
+
                 </div> <!-- form-group// -->
+                <span><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error5"))%></span>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block"> Create Account</button>
+                    <button type="submit" class="btn btn-primary btn-block"> Edit</button>
                 </div> <!-- form-group// -->
-                <p class="text-center">Have an account? <a href="../index.jsp">Log In</a></p>
             </form>
         </article>
     </div>
 </section>
-
-
 <footer>
     <div class="footer-copyright text-center py-3">© 2020 Copyright:
-        <a href="../index.jsp"> LuonVuituoi.com</a>
+        <a href="/posts"> LuonVuituoi.com</a>
     </div>
 </footer>
-
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

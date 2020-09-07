@@ -41,15 +41,15 @@
                 Đăng nhập
             </a>
             <form class="dropdown-menu p-3" method="post" action="/login">
-                <div class="form-group">
+                <div class="form-group" >
                     <label for="exampleDropdownFormEmail2">Username</label>
                     <input type="text" class="form-control" id="exampleDropdownFormEmail2"
-                           placeholder="Username" name="username">
+                           placeholder="Username" name="username" required="">
                 </div>
                 <div class="form-group">
                     <label for="exampleDropdownFormPassword2">Password</label>
                     <input type="password" class="form-control" id="exampleDropdownFormPassword2"
-                           placeholder="Password" name="userpass">
+                           placeholder="Password" name="userpass" required="">
                 </div>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="dropdownCheck2">
@@ -65,7 +65,6 @@
         </div>
     </nav>
 </header>
-<button><a href="createPost.jsp">ahihi</a></button>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
