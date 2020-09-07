@@ -2,6 +2,7 @@ package com.casestudy.controller;
 
 import com.casestudy.dao.PostDao;
 import com.casestudy.model.Post;
+import com.casestudy.model.SortNewPost;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.List;
 
 @WebServlet(name = "PostServlet", urlPatterns = "/posts")
@@ -74,6 +76,7 @@ public class PostServlet extends HttpServlet {
     private void listPost(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         List<Post> listPost = postDao.selectAllPosts();
+        Collections.sort(listPost, new SortNewPost());
         request.setAttribute("listPost", listPost);
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/main.jsp");
         dispatcher.forward(request, response);
@@ -122,12 +125,12 @@ public class PostServlet extends HttpServlet {
 
     private void deletePost(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        postDao.deletePost(id);
+        int postId = Integer.parseInt(request.getParameter("postId" ));
+        postDao.deletePost(postId);
 
         List<Post> listPost = postDao.selectAllPosts();
         request.setAttribute("listPost", listPost);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/createPost.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/main.jsp");
         dispatcher.forward(request, response);
     }
 }

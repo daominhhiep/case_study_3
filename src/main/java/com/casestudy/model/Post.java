@@ -6,6 +6,8 @@ public class Post {
     private String content;
     private String path;
     private String date;
+    private int userId;
+    private int categoryId;
 
     public Post() {
     }
@@ -23,12 +25,13 @@ public class Post {
         this.date = date;
     }
 
-    //    public Post(int postId, String images, String content, String path) {
-//        this.postId = postId;
-//        this.images = images;
-//        this.content = content;
-//        this.path = path;
-//    }
+        public Post(int postId, String images, String content, String path, String date) {
+        this.postId = postId;
+        this.images = images;
+        this.content = content;
+        this.path = path;
+        this.date = date;
+    }
 
     public int getPostId() {
         return postId;
@@ -68,6 +71,22 @@ public class Post {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 }
 

@@ -9,7 +9,7 @@ import java.util.List;
 public class PostDao implements IPostDao{
     private static final String SELECT_POST_BY_ID = "select id,images,content from post where id =?";
     private static final String SELECT_ALL_POST = "select *  from post";
-    private static final String DELETE_POST_SQL = "delete from post where id = ?;";
+    private static final String DELETE_POST_SQL = "delete from post where postId = ?;";
     private static final String UPDATE_POST_SQL = "update post set images = ?,content= ? where id = ?;";
 
     public PostDao() {
@@ -65,12 +65,10 @@ public class PostDao implements IPostDao{
     }
 
     public List<Post> selectAllPosts() {
-
         // using try-with-resources to avoid closing resources (boiler plate code)
         List<Post> posts = new ArrayList<>();
         // Step 1: Establishing a Connection
         try (Connection connection = getConnection();
-
              // Step 2:Create a statement using connection object
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_POST);) {
             System.out.println(preparedStatement);
@@ -85,7 +83,7 @@ public class PostDao implements IPostDao{
                 String content = rs.getString("content");
                 String path = rs.getString("path");
                 String date = rs.getString("added_date");
-                posts.add(new Post(images, content, path, date));
+                posts.add(new Post(id, images, content, path, date));
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -93,10 +91,10 @@ public class PostDao implements IPostDao{
         return posts;
     }
 
-    public boolean deletePost(int id) throws SQLException {
+    public boolean deletePost(int postId) throws SQLException {
         boolean rowDeleted;
         try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(DELETE_POST_SQL);) {
-            statement.setInt(1, id);
+            statement.setInt(1, postId);
             rowDeleted = statement.executeUpdate() > 0;
         }
         return rowDeleted;

@@ -86,6 +86,8 @@
                 <div class="featured-text text-center text-lg-left">
                     <h4>${cus.content}</h4>
                     <p class="text-black-50 mb-0">${cus.date}</p>
+                    <h1 class="card-title top" name ="${cus.postId}" hidden>${cus.postId}</h1>
+                    <a name="delete" href="/posts?action=delete&postId=${cus.postId}">Xóa</a>
                 </div>
             </div>
         </div>

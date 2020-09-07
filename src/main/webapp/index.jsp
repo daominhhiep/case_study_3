@@ -95,10 +95,10 @@
                 </p>
             </div>
         </div>
-        <img class="img-fluid" src="assets/img/ipad.png" alt=""/>
+        <img class="img-fluid" src="resources/image/logo.png" alt="" style="padding-bottom: 30px; width: 310px; height: 225px" />
     </div>
 </section>
-<!-- Projects-->
+
 <section class="projects-section bg-light" id="projects">
     <div class="container">
         <!-- Featured Project Row-->
@@ -129,13 +129,13 @@
         </div>
         <!-- Project Two Row-->
         <div class="row justify-content-center no-gutters">
-            <div class="col-lg-6"><img class="img-fluid" src="assets/img/demo-image-02.jpg" alt=""/></div>
+            <div class="col-lg-6"><img class="img-fluid" src="resources/image/ngua1.jpeg" alt=""/></div>
             <div class="col-lg-6 order-lg-first">
                 <div class="bg-black text-center h-100 project">
                     <div class="d-flex h-100">
                         <div class="project-text w-100 my-auto text-center text-lg-right">
-                            <h4 class="text-white">Mountains</h4>
-                            <p class="mb-0 text-white-50">Một ngọn núi có sương mù!</p>
+                            <h4 class="text-white">Horse</h4>
+                            <p class="mb-0 text-white-50">Một con ngựa!</p>
                             <hr class="d-none d-lg-block mb-0 mr-0"/>
                         </div>
                     </div>
