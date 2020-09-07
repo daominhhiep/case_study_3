@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -29,6 +30,7 @@
     <div class="card">
         <article class="card-body mx-auto" style="max-width: 400px">
             <form action="/upload" method="post" enctype="multipart/form-data">
+                <input type="number" name="id" placeholder="ID" >
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-file-upload"></i> </span>
