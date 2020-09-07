@@ -9,12 +9,18 @@ public class Post {
     public Post() {
     }
 
-    public Post(int postId, String images, String content, String path) {
-        this.postId = postId;
-        this.images = images;
+    public Post(String content, String images, String path) {
         this.content = content;
+        this.images = images;
         this.path = path;
     }
+
+//    public Post(int postId, String images, String content, String path) {
+//        this.postId = postId;
+//        this.images = images;
+//        this.content = content;
+//        this.path = path;
+//    }
 
     public int getPostId() {
         return postId;

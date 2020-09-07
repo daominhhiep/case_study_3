@@ -81,7 +81,7 @@ public class PostServlet extends HttpServlet {
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/createPost.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/createPost.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -89,7 +89,7 @@ public class PostServlet extends HttpServlet {
             throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         Post existingPost = postDao.selectPost(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/createPost.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/createPost.jsp");
         request.setAttribute("post", existingPost);
         dispatcher.forward(request, response);
 
@@ -101,9 +101,9 @@ public class PostServlet extends HttpServlet {
         String images = request.getParameter("images");
         String content = request.getParameter("content");
         String path = request.getParameter("path");
-        Post newPost = new Post(id, images, content, path);
+        Post newPost = new Post(images, content, path);
         postDao.insertPost(newPost);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/createPost.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/createPost.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -114,9 +114,9 @@ public class PostServlet extends HttpServlet {
         String content = request.getParameter("content");
         String path = request.getParameter("path");
 
-        Post book = new Post(id, images, content, path);
+        Post book = new Post(images, content, path);
         postDao.updatePost(book);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/createPost.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/createPost.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -127,7 +127,7 @@ public class PostServlet extends HttpServlet {
 
         List<Post> listPost = postDao.selectAllPosts();
         request.setAttribute("listPost", listPost);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/createPost.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/createPost.jsp");
         dispatcher.forward(request, response);
     }
 }
