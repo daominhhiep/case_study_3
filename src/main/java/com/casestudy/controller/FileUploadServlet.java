@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import javax.swing.text.html.HTML;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,18 +23,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-
 @WebServlet(name = "FileUploadServlet", urlPatterns = {"/upload"})
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 10, // 10 MB
         maxFileSize = 1024 * 1024 * 1000, // 1 GB
-        maxRequestSize = 1024 * 1024 * 1000)   	// 1 GB
+        maxRequestSize = 1024 * 1024 * 1000)       // 1 GB
 public class FileUploadServlet extends HttpServlet {
-
     PrintWriter out;
     Connection connection;
     PreparedStatement ps;
     ServletOutputStream os;
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -61,11 +59,10 @@ public class FileUploadServlet extends HttpServlet {
             System.out.println("date: " + added_date);
             InputStream is = filePart.getInputStream();
             Files.copy(is, Paths.get(uploadPath + File.separator + images), StandardCopyOption.REPLACE_EXISTING);
-
             try {
                 connection = ConnectionDBUser.getConnection();
                 System.out.println("connection done");
-                String sql = "insert into post(content,images,path,added_date) values(?,?,?,?);";
+                String sql = "insert into post(content,images,path,added_date) values(?,?,?,?)";
                 ps = connection.prepareStatement(sql);
 //                ps.setInt(1, id);
                 ps.setString(1, content);
@@ -74,11 +71,9 @@ public class FileUploadServlet extends HttpServlet {
                 ps.setTimestamp(4, added_date);
                 int status = ps.executeUpdate();
                 if (status > 0) {
-//                    os.println("File uploaded successfully...");
-//                    os.println("Uploaded Path: " + uploadPath);
                     response.sendRedirect("/posts");
-
                     response.getOutputStream().close();
+//                    os.println("Uploaded Path: " + uploadPath);
                 }
             } catch (SQLException e) {
                 os.println("Some error occured please console log. hihi");
@@ -86,12 +81,10 @@ public class FileUploadServlet extends HttpServlet {
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
-
         } catch (IOException | ServletException e) {
             os.println("Some error occured please console log. Huhu");
             System.out.println("Exception2: " + e);
         }
     }
-
 }
 

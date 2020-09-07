@@ -97,7 +97,7 @@ public class PostServlet extends HttpServlet {
 
     private void insertPost(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-//        int id = Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter("id"));
         String images = request.getParameter("images");
         String content = request.getParameter("content");
         String path = request.getParameter("path");
@@ -109,15 +109,14 @@ public class PostServlet extends HttpServlet {
 
     private void updatePost(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-//        int id = Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter("id"));
         String images = request.getParameter("images");
         String content = request.getParameter("content");
         String path = request.getParameter("path");
 
         Post book = new Post(images, content, path);
         postDao.updatePost(book);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/" +
-                ".jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/createPost.jsp");
         dispatcher.forward(request, response);
     }
 

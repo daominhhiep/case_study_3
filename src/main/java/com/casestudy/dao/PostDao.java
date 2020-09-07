@@ -21,7 +21,7 @@ public class PostDao implements IPostDao{
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/casestudymodule3?useUnicode=true&characterEncoding=UTF-8", "root", "123456");
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block

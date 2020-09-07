@@ -47,7 +47,7 @@ public class CreateDao extends HttpServlet {
         }else if (!Validate.checkPassword(userPass)) {
             request.setAttribute("error4", "Nhập chữ cái hoa hoặc chữ số, mật khẩu gồm 8 ký tự trở lên!");
             disCreate.forward(request, response);
-        } else if (userPass.equals(reUserPass)) {
+        } else if (!userPass.equals(reUserPass)) {
             request.setAttribute("error5", "Mật khẩu không khớp!");
             disCreate.forward(request, response);
         } else {
