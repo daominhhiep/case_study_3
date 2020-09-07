@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ConnectionDBUser {
-    private static DataSource dataSource;
     private static final String DRIVER_NAME;
     private static final String URL;
     private static final String USER_NAME;

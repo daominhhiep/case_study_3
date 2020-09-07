@@ -20,7 +20,7 @@
 
 <header class="header">
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 70px">
-        <a class="navbar-brand" href="../index.jsp">
+        <a class="navbar-brand" href="/posts">
             <img src="../resources/image/logo.png" width="30" height="30" class="d-inline-block align-top"
                  alt="">
             Luon Vuituoi

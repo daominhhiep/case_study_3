@@ -35,7 +35,7 @@ public class EditUserServlet extends HttpServlet {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("user/edit.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/posts");
         dispatcher.forward(request, response);
     }
 

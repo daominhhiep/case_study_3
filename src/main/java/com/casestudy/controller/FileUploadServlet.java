@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import javax.swing.text.html.HTML;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -46,12 +47,12 @@ public class FileUploadServlet extends HttpServlet {
                 dir.mkdirs();
             }
             Part filePart = request.getPart("file");
-            int id = Integer.parseInt(request.getParameter("id"));
+//            int id = Integer.parseInt(request.getParameter("id"));
             String content = request.getParameter("content");
             String images = filePart.getSubmittedFileName();
             String path1 = folderName + File.separator + images;
             Timestamp added_date = new Timestamp(System.currentTimeMillis());
-            System.out.println("id: " + id);
+//            System.out.println("id: " + id);
             System.out.println("content: " + content);
             System.out.println("images: " + images);
             System.out.println("path: " + path1);
@@ -61,17 +62,18 @@ public class FileUploadServlet extends HttpServlet {
             try {
                 connection = ConnectionDBUser.getConnection();
                 System.out.println("connection done");
-                String sql = "insert into post(postId,content,images,path,added_date) values(?,?,?,?,?)";
+                String sql = "insert into post(content,images,path,added_date) values(?,?,?,?)";
                 ps = connection.prepareStatement(sql);
-                ps.setInt(1, id);
-                ps.setString(2, content);
-                ps.setString(3, images);
-                ps.setString(4, path1);
-                ps.setTimestamp(5, added_date);
+//                ps.setInt(1, id);
+                ps.setString(1, content);
+                ps.setString(2, images);
+                ps.setString(3, path1);
+                ps.setTimestamp(4, added_date);
                 int status = ps.executeUpdate();
                 if (status > 0) {
-                    os.println("File uploaded successfully...");
-                    os.println("Uploaded Path: " + uploadPath);
+                    response.sendRedirect("/posts");
+                    response.getOutputStream().close();
+//                    os.println("Uploaded Path: " + uploadPath);
                 }
             } catch (SQLException e) {
                 os.println("Some error occured please console log. hihi");
