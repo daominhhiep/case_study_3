@@ -114,8 +114,8 @@ public class PostServlet extends HttpServlet {
         String content = request.getParameter("content");
         String path = request.getParameter("path");
 
-        Post book = new Post(images, content, path);
-        postDao.updatePost(book);
+        Post post = new Post(images, content, path);
+        postDao.updatePost(post);
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/createPost.jsp");
         dispatcher.forward(request, response);
     }

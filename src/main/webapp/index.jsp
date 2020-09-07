@@ -12,13 +12,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-    <title>Grayscale - Start Bootstrap Theme</title>
+    <title>Trang chủ - Luon Vuituoi</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"/>
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet"/>
-
     <link href="resources/css/styles.css" rel="stylesheet"/>
 </head>
 <body id="page-top">
@@ -26,7 +25,9 @@
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Luon Vuituoi</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+            <img src="../../resources/image/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            Luon Vuituoi</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -35,16 +36,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">Projects</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#signup">Contact</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Giới thiệu</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">Dự án</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#signup">Liện hệ</a></li>
                 <li class="nav-item">
                     <div class="nav-link dropdown">
                         <a class="nav nav-item " id="dropdownMenu2"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Đăng nhập
                         </a>
-                        <form class="dropdown-menu p-5" method="post" action="/login">
+                        <form class="dropdown-menu p-4 px-4 py-3" method="post" action="/login">
                             <div class="form-group">
                                 <label for="exampleDropdownFormEmail2">Username</label>
                                 <input type="text" class="form-control" id="exampleDropdownFormEmail2"
@@ -58,10 +59,10 @@
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="dropdownCheck2">
                                 <label class="form-check-label" for="dropdownCheck2">
-                                    Remember me
+                                    Remember
                                 </label>
                             </div>
-                            <button type="submit" class="btn btn-primary">Sign in</button>
+                            <button type="submit" class="btn btn-primary">Đăng nhập</button>
                         </form>
                     </div>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="users/create.jsp">Đăng ký</a></li>
@@ -90,7 +91,7 @@
                 <p class="text-white-50">
                     Được thành lập bởi Nguyễn Đông Nam và Đào Minh Hiệp.<br>
                     Tìm hiểu thêm về chúng tôi tại
-                    <a href="#">facebook</a>
+                    <a href="https://www.facebook.com/namjapan0106">facebook</a>
                 </p>
             </div>
         </div>
@@ -195,9 +196,9 @@
             </div>
         </div>
         <div class="social d-flex justify-content-center">
-            <a class="mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-            <a class="mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-            <a class="mx-2" href="#!"><i class="fab fa-github"></i></a>
+            <a class="mx-2" href="#!"><i class="fab fa-twitter" style="margin-top: 15px"></i></a>
+            <a class="mx-2" href="#!"><i class="fab fa-facebook-f" style="margin-top: 15px"></i></a>
+            <a class="mx-2" href="#!"><i class="fab fa-github" style="margin-top: 15px"></i></a>
         </div>
     </div>
 </section>
@@ -208,6 +209,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-<script src="js/scripts.js"></script>
+<script src="resources/js/scripts.js"></script>
 </body>
 </html>

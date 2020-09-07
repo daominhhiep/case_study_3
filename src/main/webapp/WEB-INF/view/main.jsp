@@ -10,15 +10,17 @@
 <html>
 <head>
     <title>Luon Vuituoi</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../resources/css/style.css">
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet"/>
+    <link href="../../resources/css/styles.css" rel="stylesheet"/>
 </head>
 
 <body>
 <header class="fixed-top">
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 70px">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/posts">
             <img src="../../resources/image/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
             Luon Vuituoi
         </a>
@@ -53,11 +55,11 @@
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <a class="text-success my-2 my-sm-0" type="submit">Search</a>
             </form>
         </div>
         <div class="nav-item">
-            <a class="nav-link disabled" href="/login?action=editProfile">
+            <a class="nav-link" href="/login?action=editProfile">
                 <%
                     String username = (String) session.getAttribute("username");
                     if (session != null) {
@@ -72,38 +74,28 @@
     </nav>
 </header>
 
-<section  style="margin-top: 70px">
-    <div class="card">
-        <article class="card-body mx-auto">
-            <c:forEach items="${listPost}" var="cus">
-
-                <div style="margin-bottom: 50px">
-                    <table width="1100px">
-                        <tr>
-                            <td width="800px">
-                                <img src="${cus.path}" alt="không có">
-                            </td>
-                            <td width="300px">
-                                <h1 class="card-title top">${cus.content}</h1>
-                            </td>
-                        </tr>
-                    </table>
+<section class="projects-section bg-white" id="projects">
+    <div class="container">
+        <c:forEach items="${listPost}" var="cus">
+        <!-- Featured Project Row-->
+        <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+                <div class="col-xl-8 col-lg-7" style="width: 744px">
+                <img class="img-fluid mb-3 mb-lg-0" src="${cus.path}" alt=""/>
+            </div>
+            <div class="col-xl-4 col-lg-5">
+                <div class="featured-text text-center text-lg-left">
+                    <h4>${cus.content}</h4>
+                    <p class="text-black-50 mb-0">${cus.date}</p>
                 </div>
-            </c:forEach>
-        </article>
+            </div>
+        </div>
+        </c:forEach>
     </div>
 </section>
 
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="../../resources/js/scripts.js"></script>
 </body>
 </html>

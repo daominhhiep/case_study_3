@@ -2,20 +2,28 @@ package com.casestudy.model;
 
 public class Post {
     private int postId;
-    private String content;
     private String images;
+    private String content;
     private String path;
+    private String date;
 
     public Post() {
     }
 
-    public Post(String content, String images, String path) {
+    public Post(String images, String content, String path) {
         this.content = content;
         this.images = images;
         this.path = path;
     }
 
-//    public Post(int postId, String images, String content, String path) {
+    public Post(String images, String content, String path, String date) {
+        this.images = images;
+        this.content = content;
+        this.path = path;
+        this.date = date;
+    }
+
+    //    public Post(int postId, String images, String content, String path) {
 //        this.postId = postId;
 //        this.images = images;
 //        this.content = content;
@@ -52,6 +60,14 @@ public class Post {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }
 

@@ -21,10 +21,8 @@ public class PostDao implements IPostDao{
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/casestudymodule3?useUnicode=true&characterEncoding=UTF-8", "root", "123456");
         } catch (SQLException e) {
-
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return connection;
@@ -86,7 +84,8 @@ public class PostDao implements IPostDao{
                 String images = rs.getString("images");
                 String content = rs.getString("content");
                 String path = rs.getString("path");
-                posts.add(new Post(images, content, path));
+                String date = rs.getString("added_date");
+                posts.add(new Post(images, content, path, date));
             }
         } catch (SQLException e) {
             printSQLException(e);
