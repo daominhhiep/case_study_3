@@ -3,8 +3,8 @@ USE CaseStudyModule3;
 CREATE TABLE users (
                          userId INT AUTO_INCREMENT PRIMARY KEY ,
                          fullName NVARCHAR(255),
-                         userName VARCHAR(255),
-                         password VARCHAR(255),
+                         userName VARCHAR(255) unique not null,
+                         password VARCHAR(255) not null,
                          email VARCHAR(255),
                          phone VARCHAR(11)
 );
