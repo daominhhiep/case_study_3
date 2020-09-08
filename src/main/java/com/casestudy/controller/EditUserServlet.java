@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet(name = "EditUserServlet", urlPatterns = "/editProfile")
 public class EditUserServlet extends HttpServlet {
@@ -23,19 +24,9 @@ public class EditUserServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("userId"));
-        String fullName = request.getParameter("fullName");
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
-        String password = request.getParameter("password");
-
-        User user = new User(id, fullName, email, phone, password);
-        try {
-            userDAO.updateUser(user);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/posts");
+        List<User> userList = userDAO.selectUser();
+        request.setAttribute("listUser", userList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/editProfile.jsp");
         dispatcher.forward(request, response);
     }
 

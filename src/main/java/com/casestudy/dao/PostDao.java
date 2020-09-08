@@ -11,7 +11,7 @@ public class PostDao implements IPostDao{
     private static final String SELECT_POST_BY_ID = "select id,images,content from post where id =?";
     private static final String SELECT_ALL_POST = "select *  from post";
     private static final String DELETE_POST_SQL = "delete from post where postId = ?;";
-    private static final String UPDATE_POST_SQL = "update post set images = ?,content= ? where postId = ?;";
+    private static final String UPDATE_POST_SQL = "update post set content= ? where postId = ?;";
 
     public PostDao() {
     }
@@ -104,16 +104,15 @@ public class PostDao implements IPostDao{
         return rowDeleted;
     }
 
-    public boolean updatePost(Post post) throws SQLException {
-        boolean rowUpdated;
-        try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_POST_SQL);) {
-            statement.setString(1, post.getImages());
-            statement.setString(2, post.getContent());
-
-            rowUpdated = statement.executeUpdate() > 0;
-        }
-        return rowUpdated;
-    }
+//    public boolean updatePost(Post post) throws SQLException {
+//        boolean rowUpdated;
+//        try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_POST_SQL);) {
+//            statement.setString(1, post.getContent());
+//
+//            rowUpdated = statement.executeUpdate() > 0;
+//        }
+//        return rowUpdated;
+//    }
 
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {

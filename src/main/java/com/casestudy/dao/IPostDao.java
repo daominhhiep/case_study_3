@@ -9,5 +9,5 @@ public interface IPostDao {
     public Post selectPost(int postId);
     public List<Post>selectAllPosts();
     public boolean deletePost(int id) throws SQLException;
-    public boolean updatePost(Post post) throws SQLException;
+//    public boolean updatePost(Post post) throws SQLException;
 }

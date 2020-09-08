@@ -34,7 +34,7 @@
         <article class="card-body mx-auto" style="max-width: 400px">
             <h4 class="card-title mt-3 text-center">Edit Profile</h4>
 
-            <form method="post" action="/editProfile">
+            <form method="post" action="/editProfile" items="${listUser}" var="user">
                 <c:if test="${user != null}">
                     <input type="hidden" name="userId" value="<c:out value='${user.id}' />"/>
                 </c:if>
@@ -43,7 +43,7 @@
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
                     <input class="form-control" placeholder="Full name" type="text" name="fullName" required=""
-                    value="<c:out value='${user.fullname}'/>"/>
+                    value="<c:out value='${user.fullName}'/>"/>
                 </div>
                 <span style="color: red"><%=com.casestudy.util.StringUtil.getString(request.getAttribute("error"))%></span> <!-- form-group// -->
                 <div class="form-group input-group">

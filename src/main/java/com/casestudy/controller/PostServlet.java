@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @WebServlet(name = "PostServlet", urlPatterns = "/posts")
@@ -33,9 +35,9 @@ public class PostServlet extends HttpServlet {
                 case "create":
                     insertPost(request, response);
                     break;
-                case "edit":
-                    updatePost(request, response);
-                    break;
+//                case "edit":
+//                    updatePost(request, response);
+//                    break;
                 case "delete":
                     deletePost(request, response);
                     break;
@@ -110,23 +112,22 @@ public class PostServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    private void updatePost(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException, ServletException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        String images = request.getParameter("images");
-        String content = request.getParameter("content");
-        String path = request.getParameter("path");
-
-        Post book = new Post(images, content, path);
-        postDao.updatePost(book);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/createPost.jsp");
-        dispatcher.forward(request, response);
-    }
+//    private void updatePost(HttpServletRequest request, HttpServletResponse response)
+//            throws SQLException, IOException, ServletException {
+//        int postId = Integer.parseInt(request.getParameter("postId"));
+//        String images = request.getParameter("images");
+//        String content = request.getParameter("content");
+//        String path = request.getParameter("path");
+//
+//        Post post = new Post(postId,images, content, path);
+//        postDao.updatePost(post);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/createPost.jsp");
+//        dispatcher.forward(request, response);
+//    }
 
     private void deletePost(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         int postId = Integer.parseInt(request.getParameter("postId"));
-        System.out.println("id: " + postId);
         postDao.deletePost(postId);
 
         List<Post> listPost = postDao.selectAllPosts();

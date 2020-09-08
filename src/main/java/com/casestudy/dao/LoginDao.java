@@ -17,6 +17,9 @@ public class LoginDao {
             ResultSet resultSet=preparedStatement.executeQuery();
             if(resultSet.next()){
                 isValid=true;
+            } else {
+                request.setAttribute("error3", "Nhập chữ cái hoặc chữ số gồm 8 đến 16 ký tự!");
+                disCreate.forward(request, response);
             }
         } catch(Exception e) {
             System.out.println(e.getMessage());
