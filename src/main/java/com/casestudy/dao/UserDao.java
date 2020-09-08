@@ -13,8 +13,8 @@ public class UserDao implements IUserDao {
     private String jdbcUsername = "root";
     private String jdbcPassword = "123456";
 
-
     private static final String UPDATE_USERS_SQL = "update users set fullName = ?, email = ?, phone=?, password = ? where id = ?;";
+    private static final String UPDATE_PASSWORD_SQL = "UPDATE users SET password = ? WHERE userName = ?;";
 
     public UserDao() {
     }
@@ -32,6 +32,19 @@ public class UserDao implements IUserDao {
         return connection;
     }
 
+
+    public boolean updatePasswordUser(String username, String newPassword) {
+        boolean rowUpdated = false;
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PASSWORD_SQL)) {
+            preparedStatement.setString(1, newPassword);
+            preparedStatement.setString(2, username);
+            rowUpdated = preparedStatement.executeUpdate() > 0;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return rowUpdated;
+    }
 
     @Override
     public void insertUser(User user) throws SQLException {

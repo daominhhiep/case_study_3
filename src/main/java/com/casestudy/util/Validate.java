@@ -14,6 +14,6 @@ public class Validate {
         return username.matches("[a-z0-9]{8,16}");
     }
     public static boolean checkPassword(String password){
-        return password.matches("[a-zA-z0-9]{8,}");
+        return password.matches("[a-zA-z0-9]{6,}");
     }
 }

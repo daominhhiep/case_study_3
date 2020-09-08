@@ -42,10 +42,10 @@ public class CreateServlet extends HttpServlet {
             request.setAttribute("error2", "Nhập đúng số điện thoại của bạn");
             disCreate.forward(request, response);
         } else if (!Validate.checkUsername(userName)) {
-            request.setAttribute("error3", "Nhập chữ cái hoặc chữ số gồm 8 đến 16 ký tự!");
+            request.setAttribute("error3", "Nhập chữ cái hoặc chữ số gồm 6 đến 16 ký tự!");
             disCreate.forward(request, response);
         }else if (!Validate.checkPassword(userPass)) {
-            request.setAttribute("error4", "Nhập chữ cái hoa hoặc chữ số, mật khẩu gồm 8 ký tự trở lên!");
+            request.setAttribute("error4", "Nhập chữ cái hoặc chữ số, mật khẩu gồm 8 ký tự trở lên!");
             disCreate.forward(request, response);
         } else if (!userPass.equals(reUserPass)) {
             request.setAttribute("error5", "Mật khẩu không khớp!");
@@ -64,7 +64,6 @@ public class CreateServlet extends HttpServlet {
 //                request.setAttribute("add","Tạo tài khoản thành công!");
                 RequestDispatcher disIndex = request.getRequestDispatcher("index.jsp");
                 disIndex.forward(request, response);
-
             } catch (ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
             } finally {

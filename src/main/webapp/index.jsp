@@ -41,7 +41,7 @@
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#signup">Liên hệ</a></li>
                 <li class="nav-item">
                     <div class="nav-link dropdown">
-                        <a class="nav nav-item " id="dropdownMenu2"
+                        <a class="nav nav-item" id="dropdownMenu2"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Đăng nhập
                         </a>

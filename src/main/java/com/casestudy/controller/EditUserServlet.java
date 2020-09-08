@@ -14,38 +14,40 @@ import java.sql.SQLException;
 
 @WebServlet(name = "EditUserServlet", urlPatterns = "/editProfile")
 public class EditUserServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-    private UserDao userDAO;
-
-    public void init() {
-        userDAO = new UserDao();
-    }
+    UserDao userDAO = new UserDao();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("userId"));
+            throws ServletException, IOException, SQLException {
+//        int id = Integer.parseInt(request.getParameter("userId"));
         String fullName = request.getParameter("fullName");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         String password = request.getParameter("password");
 
-        User user = new User(id, fullName, email, phone, password);
-        try {
-            userDAO.updateUser(user);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        User user = new User(fullName, email, phone, password);
+        if (userDAO.updateUser(user)) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/posts");
+            dispatcher.forward(request, response);
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/posts");
-        dispatcher.forward(request, response);
     }
 
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        processRequest(request, response);
-    }
+        protected void doPost (HttpServletRequest request, HttpServletResponse response) throws
+        ServletException, IOException {
+            response.setContentType("text/html;charset=UTF-8");
+            try {
+                processRequest(request, response);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
-    }
+        protected void doGet (HttpServletRequest request, HttpServletResponse response) throws
+        ServletException, IOException {
+            try {
+                processRequest(request, response);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
 }

@@ -34,21 +34,21 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Mới<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Hot</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Thể loại
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Hài</a>
-                        <a class="dropdown-item" href="#">Động vật</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Ảnh của tôi</a>
-                    </div>
-                </li>
+<%--                <li class="nav-item">--%>
+<%--                    <a class="nav-link" href="#">Hot</a>--%>
+<%--                </li>--%>
+<%--                <li class="nav-item dropdown">--%>
+<%--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"--%>
+<%--                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
+<%--                        Thể loại--%>
+<%--                    </a>--%>
+<%--                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">--%>
+<%--                        <a class="dropdown-item" href="#">Hài</a>--%>
+<%--                        <a class="dropdown-item" href="#">Động vật</a>--%>
+<%--                        <div class="dropdown-divider"></div>--%>
+<%--                        <a class="dropdown-item" href="#">Ảnh của tôi</a>--%>
+<%--                    </div>--%>
+<%--                </li>--%>
                 <li class="nav-item">
                     <a  class="nav-link" href="/login?action=createPost">Đăng bài</a>
                 </li>
